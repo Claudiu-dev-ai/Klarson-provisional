@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>KLARSON | System Upgrade</title>
+    <title>KLARSON AI | System Upgrade</title>
     
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg viewBox='0 0 84 100' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Crect x='0' y='27.5' width='12' height='45' fill='%230B0D0E'/%3E%3Crect x='24' y='0' width='12' height='100' fill='%230B0D0E'/%3E%3Crect x='48' y='15' width='12' height='70' fill='%230B0D0E'/%3E%3Crect x='72' y='35' width='12' height='30' fill='%230B0D0E'/%3E%3C/svg%3E">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg viewBox='0 0 280 280' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Crect x='92' y='77' width='9' height='126' fill='%230B0D0E'/%3E%3Crect x='121' y='0' width='9' height='280' fill='%230B0D0E'/%3E%3Crect x='150' y='42' width='9' height='196' fill='%230B0D0E'/%3E%3Crect x='179' y='98' width='9' height='84' fill='%230B0D0E'/%3E%3C/svg%3E">
     
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/geist-sans@5.0.1/500.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/geist-sans@5.0.1/300.css">
@@ -26,7 +26,6 @@
             justify-content: center;
             align-items: center;
             font-family: 'Geist Sans', sans-serif;
-            /* Fondo elegante: Base de papel con un sutil foco de luz ámbar arriba */
             background-color: var(--logo-paper);
             background-image: radial-gradient(circle at 50% -20%, rgba(232, 178, 58, 0.15), transparent 65%);
             color: var(--logo-ink);
@@ -46,12 +45,12 @@
             align-items: center;
         }
 
-        /* Logo Alineado Perfectamente */
+        /* Logo con proporciones y grosor corregidos */
         .logo {
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 20px;
+            gap: 16px; /* Gap exacto del 7% visual */
             margin-bottom: 60px;
         }
 
@@ -70,7 +69,7 @@
             margin-top: 4px; 
         }
 
-        /* Textos Principales */
+        /* Textos de Inteligencia Artificial */
         h1 {
             font-size: 3.8rem;
             font-weight: 300;
@@ -84,10 +83,11 @@
             font-weight: 300;
             color: #555;
             margin-bottom: 60px;
-            max-width: 600px;
+            max-width: 650px;
+            line-height: 1.5;
         }
 
-        /* Contador con Segundos */
+        /* Contador */
         .timer {
             display: flex;
             gap: 50px;
@@ -118,7 +118,7 @@
             color: #888;
         }
 
-        /* Pie de página Limpio */
+        /* Pie de página B2B AI */
         .footer-note {
             width: 100%;
             max-width: 700px;
@@ -158,17 +158,17 @@
 
     <div class="wrapper">
         <div class="logo">
-            <svg class="brand-mark" viewBox="0 0 84 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <rect x="0" y="27.5" width="12" height="45" fill="var(--logo-ink)"/>
-                <rect x="24" y="0" width="12" height="100" fill="var(--logo-amber)"/>
-                <rect x="48" y="15" width="12" height="70" fill="var(--logo-ink)"/>
-                <rect x="72" y="35" width="12" height="30" fill="var(--logo-ink)"/>
+            <svg class="brand-mark" viewBox="0 0 96 280" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect x="0" y="77" width="9" height="126" fill="var(--logo-ink)"/>
+                <rect x="29" y="0" width="9" height="280" fill="var(--logo-amber)"/>
+                <rect x="58" y="42" width="9" height="196" fill="var(--logo-ink)"/>
+                <rect x="87" y="98" width="9" height="84" fill="var(--logo-ink)"/>
             </svg>
             <span class="brand-name">KLARSON</span>
         </div>
 
-        <h1>Refining our infrastructure.</h1>
-        <p class="tagline">We are currently making essential upgrades to deliver absolute clarity. All systems will resume in:</p>
+        <h1>Refining our AI models.</h1>
+        <p class="tagline">We are currently making essential upgrades to our conversational AI infrastructure to deliver absolute clarity. All systems will resume in:</p>
 
         <div class="timer">
             <div class="unit">
@@ -190,8 +190,8 @@
         </div>
 
         <div class="footer-note">
-            <span class="philosophy">Engineered for sound. Built for scale.</span>
-            <span class="meta-info">© 2026 KLARSON</span>
+            <span class="philosophy">Powered by AI. Built for scale.</span>
+            <span class="meta-info">© 2026 KLARSON AI</span>
         </div>
     </div>
 
@@ -210,7 +210,7 @@
                 document.getElementById('s').innerText = Math.floor((diff % 60000) / 1000).toString().padStart(2, '0');
             } else {
                 document.querySelector('h1').innerText = "CLARITY HAS ARRIVED.";
-                document.querySelector('.tagline').innerText = "The infrastructure upgrades are complete.";
+                document.querySelector('.tagline').innerText = "The AI infrastructure upgrades are complete.";
                 document.querySelector('.timer').style.display = 'none';
             }
         }
@@ -221,3 +221,4 @@
 
 </body>
 </html>
+
