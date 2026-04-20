@@ -1,224 +1,614 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>KLARSON AI | System Upgrade</title>
-    
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg viewBox='0 0 280 280' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Crect x='92' y='77' width='9' height='126' fill='%230B0D0E'/%3E%3Crect x='121' y='0' width='9' height='280' fill='%230B0D0E'/%3E%3Crect x='150' y='42' width='9' height='196' fill='%230B0D0E'/%3E%3Crect x='179' y='98' width='9' height='84' fill='%230B0D0E'/%3E%3C/svg%3E">
-    
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/geist-sans@5.0.1/500.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/geist-sans@5.0.1/300.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Klarson — Scheduled maintenance</title>
+  <meta name="description" content="Klarson is undergoing a short scheduled maintenance window and will return shortly." />
+  <meta name="theme-color" content="#F7F6F2" />
+  <link rel="icon" href="./favicon.svg" type="image/svg+xml" />
+  <link rel="apple-touch-icon" href="./icon.svg" />
+  <style>
+    @font-face {
+      font-family: 'Geist';
+      font-weight: 400;
+      font-style: normal;
+      font-display: swap;
+      src: url('https://cdn.jsdelivr.net/npm/geist@1.3.0/dist/fonts/geist-sans/Geist-Regular.woff2') format('woff2');
+    }
 
-    <style>
-        :root {
-            --logo-ink: #0B0D0E;
-            --logo-paper: #F7F6F2;
-            --logo-amber: #E8B23A;
-        }
+    @font-face {
+      font-family: 'Geist';
+      font-weight: 500;
+      font-style: normal;
+      font-display: swap;
+      src: url('https://cdn.jsdelivr.net/npm/geist@1.3.0/dist/fonts/geist-sans/Geist-Medium.woff2') format('woff2');
+    }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; }
+    @font-face {
+      font-family: 'Geist';
+      font-weight: 600;
+      font-style: normal;
+      font-display: swap;
+      src: url('https://cdn.jsdelivr.net/npm/geist@1.3.0/dist/fonts/geist-sans/Geist-SemiBold.woff2') format('woff2');
+    }
 
-        body {
-            height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            font-family: 'Geist Sans', sans-serif;
-            background-color: var(--logo-paper);
-            background-image: radial-gradient(circle at 50% -20%, rgba(232, 178, 58, 0.15), transparent 65%);
-            color: var(--logo-ink);
-            text-align: center;
-            overflow: hidden;
-            position: relative;
-        }
+    :root {
+      --paper: #F7F6F2;
+      --paper-alt: #EFEDE5;
+      --ink: #0B0D0E;
+      --ink-soft: rgba(11, 13, 14, 0.7);
+      --ink-faint: rgba(11, 13, 14, 0.48);
+      --line: rgba(11, 13, 14, 0.12);
+      --signal: #E8B23A;
+      --signal-soft: rgba(232, 178, 58, 0.22);
+      --radius-sm: 4px;
+      --radius-md: 6px;
+      --container: 1200px;
+      --font-sans: 'Geist', Inter, -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+      --font-serif: 'Iowan Old Style', 'Palatino Linotype', 'Book Antiqua', Georgia, serif;
+      --font-mono: ui-monospace, 'SFMono-Regular', 'JetBrains Mono', Consolas, monospace;
+      --shadow-focus: 0 0 0 2px #E8B23A;
+      color-scheme: light;
+    }
 
-        .wrapper {
-            position: relative;
-            z-index: 2;
-            width: 100%;
-            max-width: 900px;
-            padding: 40px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
+    * { box-sizing: border-box; }
 
-        /* Logo con proporciones y grosor corregidos */
-        .logo {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 16px; /* Gap exacto del 7% visual */
-            margin-bottom: 60px;
-        }
+    html, body { min-height: 100%; }
 
-        .brand-mark { 
-            height: 52px; 
-            width: auto; 
-            display: block;
-        }
+    body {
+      margin: 0;
+      background: var(--paper);
+      color: var(--ink);
+      font-family: var(--font-sans);
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+    }
 
-        .brand-name {
-            font-size: 40px;
-            font-weight: 500;
-            letter-spacing: -0.01em;
-            text-transform: uppercase;
-            line-height: 1; 
-            margin-top: 4px; 
-        }
+    a { color: inherit; }
 
-        /* Textos de Inteligencia Artificial */
-        h1 {
-            font-size: 3.8rem;
-            font-weight: 300;
-            letter-spacing: -0.03em;
-            margin-bottom: 16px;
-            line-height: 1.1;
-        }
+    .shell {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      padding: 28px 20px 24px;
+    }
 
-        .tagline {
-            font-size: 1.2rem;
-            font-weight: 300;
-            color: #555;
-            margin-bottom: 60px;
-            max-width: 650px;
-            line-height: 1.5;
-        }
+    .topbar,
+    .footer {
+      width: 100%;
+      max-width: var(--container);
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
 
-        /* Contador */
-        .timer {
-            display: flex;
-            gap: 50px;
-            justify-content: center;
-            margin-bottom: 90px;
-        }
+    .topbar {
+      padding-bottom: 32px;
+    }
 
-        .unit { 
-            display: flex; 
-            flex-direction: column; 
-            align-items: center;
-            min-width: 80px; 
-        }
+    .footer {
+      padding-top: 36px;
+      border-top: 0.5px solid var(--line);
+      color: var(--ink-faint);
+      font-size: 12px;
+      line-height: 1.6;
+      flex-wrap: wrap;
+    }
 
-        .val { 
-            font-size: 4.5rem; 
-            font-weight: 300; 
-            line-height: 1; 
-            color: var(--logo-ink); 
-            font-variant-numeric: tabular-nums; 
-        }
+    .hero-wrap {
+      width: 100%;
+      max-width: var(--container);
+      margin: auto auto;
+      display: grid;
+      grid-template-columns: minmax(0, 1.2fr) minmax(320px, 0.8fr);
+      gap: 48px;
+      align-items: end;
+      padding: 24px 0 48px;
+    }
 
-        .lab { 
-            font-size: 0.75rem; 
-            text-transform: uppercase; 
-            letter-spacing: 3px; 
-            margin-top: 12px; 
-            color: #888;
-        }
+    .eyebrow {
+      margin: 0 0 18px;
+      font-size: 11px;
+      line-height: 1.4;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--ink-faint);
+      font-weight: 500;
+    }
 
-        /* Pie de página B2B AI */
-        .footer-note {
-            width: 100%;
-            max-width: 700px;
-            padding-top: 30px;
-            border-top: 1px solid rgba(11, 13, 14, 0.1);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
+    h1 {
+      margin: 0;
+      font-family: var(--font-serif);
+      font-size: clamp(3rem, 7vw, 5.4rem);
+      line-height: 1.02;
+      letter-spacing: -0.03em;
+      font-weight: 400;
+      max-width: 14ch;
+    }
 
-        .philosophy {
-            font-size: 0.85rem;
-            font-weight: 500;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-        }
+    .lede {
+      margin: 22px 0 0;
+      max-width: 40rem;
+      font-size: 20px;
+      line-height: 1.58;
+      color: var(--ink-soft);
+    }
 
-        .meta-info {
-            font-size: 0.8rem;
-            color: #777;
-            font-weight: 300;
-        }
+    .meta {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+      margin-top: 36px;
+      max-width: 820px;
+      padding-top: 20px;
+      border-top: 0.5px solid var(--line);
+    }
 
-        @media (max-width: 768px) {
-            h1 { font-size: 2.5rem; }
-            .timer { gap: 20px; }
-            .val { font-size: 3rem; }
-            .footer-note { 
-                flex-direction: column; 
-                gap: 15px; 
-                text-align: center; 
-            }
-        }
-    </style>
+    .meta-block {
+      min-width: 0;
+    }
+
+    .meta-label {
+      display: block;
+      margin-bottom: 6px;
+      font-size: 10px;
+      line-height: 1.4;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--ink-faint);
+      font-weight: 500;
+    }
+
+    .meta-value {
+      font-size: 14px;
+      line-height: 1.65;
+      color: var(--ink-soft);
+    }
+
+    .line-wrap {
+      margin-top: 34px;
+      max-width: 920px;
+    }
+
+    .status-card {
+      background: var(--paper);
+      border: 0.5px solid var(--line);
+      border-radius: var(--radius-md);
+      padding: 26px;
+      position: relative;
+    }
+
+    .status-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: inherit;
+      pointer-events: none;
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    }
+
+    .card-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding-bottom: 16px;
+      border-bottom: 0.5px solid var(--line);
+      margin-bottom: 18px;
+    }
+
+    .card-title {
+      margin: 0;
+      font-size: 15px;
+      line-height: 1.4;
+      font-weight: 500;
+      letter-spacing: -0.01em;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 11px;
+      line-height: 1.4;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--ink-faint);
+      white-space: nowrap;
+    }
+
+    .badge-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--signal);
+      box-shadow: 0 0 0 6px var(--signal-soft);
+      animation: pulse 2.6s cubic-bezier(0.2, 0, 0, 1) infinite;
+    }
+
+    .countdown {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .count-item {
+      padding: 16px 14px;
+      border-radius: var(--radius-sm);
+      border: 0.5px solid var(--line);
+      background: var(--paper-alt);
+      min-height: 94px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+    }
+
+    .count-value {
+      font-family: var(--font-serif);
+      font-size: clamp(2rem, 3.5vw, 3rem);
+      line-height: 1;
+      letter-spacing: -0.03em;
+      font-variant-numeric: tabular-nums;
+      font-feature-settings: 'tnum' 1;
+      margin: 0;
+    }
+
+    .count-label {
+      margin-top: 8px;
+      font-size: 10px;
+      line-height: 1.4;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--ink-faint);
+      font-weight: 500;
+    }
+
+    .card-copy {
+      margin: 18px 0 0;
+      color: var(--ink-soft);
+      font-size: 14px;
+      line-height: 1.7;
+    }
+
+    .subcopy {
+      margin: 20px 0 0;
+      color: var(--ink-faint);
+      font-size: 12px;
+      line-height: 1.7;
+      font-family: var(--font-mono);
+      font-variant-numeric: tabular-nums;
+      font-feature-settings: 'tnum' 1;
+    }
+
+    .actions {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-top: 26px;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 44px;
+      padding: 0 16px;
+      border-radius: var(--radius-sm);
+      border: 0.5px solid transparent;
+      font-size: 14px;
+      line-height: 1;
+      font-weight: 500;
+      letter-spacing: -0.01em;
+      text-decoration: none;
+      transition: transform 180ms cubic-bezier(0.2, 0, 0, 1), background-color 180ms cubic-bezier(0.2, 0, 0, 1), border-color 180ms cubic-bezier(0.2, 0, 0, 1), color 180ms cubic-bezier(0.2, 0, 0, 1);
+    }
+
+    .button:focus-visible {
+      outline: none;
+      box-shadow: var(--shadow-focus);
+    }
+
+    .button-primary {
+      background: var(--ink);
+      color: var(--paper);
+    }
+
+    .button-primary:hover { background: #1A1D1F; }
+
+    .button-secondary {
+      border-color: rgba(11, 13, 14, 0.24);
+      color: var(--ink);
+      background: transparent;
+    }
+
+    .button-secondary:hover {
+      border-color: rgba(11, 13, 14, 0.48);
+      background: rgba(11, 13, 14, 0.03);
+    }
+
+    .button:active { transform: scale(0.985); }
+
+    .logo {
+      --logo-size: 180px;
+      display: inline-flex;
+      align-items: center;
+      gap: calc(var(--logo-size) * 0.07);
+      color: var(--ink);
+      line-height: 1;
+      user-select: none;
+      text-decoration: none;
+      flex-shrink: 0;
+    }
+
+    .logo-word {
+      font-family: var(--font-sans);
+      font-weight: 500;
+      font-size: calc(var(--logo-size) * 0.155);
+      letter-spacing: -0.01em;
+      color: currentColor;
+      white-space: nowrap;
+    }
+
+    .logo-mark {
+      display: flex;
+      align-items: center;
+      gap: calc(var(--logo-size) * 0.020);
+      height: calc(var(--logo-size) * 0.28);
+    }
+
+    .logo-mark span {
+      display: block;
+      width: calc(var(--logo-size) * 0.009);
+      background: currentColor;
+    }
+
+    .logo-mark span:nth-child(1) { height: 45%; }
+    .logo-mark span:nth-child(2) { height: 100%; }
+    .logo-mark span:nth-child(3) { height: 70%; }
+    .logo-mark span:nth-child(4) { height: 30%; }
+
+    .logo-signal .logo-mark span:nth-child(2) {
+      background: var(--signal);
+    }
+
+    .micro-note {
+      color: var(--ink-faint);
+      font-size: 12px;
+      line-height: 1.7;
+      max-width: 22rem;
+      text-align: right;
+    }
+
+    .divider {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      border: 0;
+      white-space: nowrap;
+    }
+
+    @keyframes pulse {
+      0% { box-shadow: 0 0 0 0 rgba(232, 178, 58, 0.18); }
+      70% { box-shadow: 0 0 0 10px rgba(232, 178, 58, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(232, 178, 58, 0); }
+    }
+
+    @keyframes drift {
+      0% { transform: translateX(0); }
+      50% { transform: translateX(10px); }
+      100% { transform: translateX(0); }
+    }
+
+    .wave {
+      transform-origin: center;
+      animation: drift 4s cubic-bezier(0.2, 0, 0, 1) infinite;
+    }
+
+    @media (max-width: 980px) {
+      .hero-wrap {
+        grid-template-columns: 1fr;
+        gap: 28px;
+      }
+
+      .micro-note {
+        text-align: left;
+        max-width: 100%;
+      }
+
+      .topbar,
+      .footer {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .shell {
+        padding-inline: 16px;
+      }
+
+      .topbar {
+        padding-bottom: 18px;
+      }
+
+      .status-card {
+        padding: 20px;
+      }
+
+      .countdown,
+      .meta {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .card-header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .logo {
+        --logo-size: 134px;
+      }
+
+      .lede {
+        font-size: 18px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .badge-dot,
+      .wave,
+      .button {
+        animation: none !important;
+        transition: none !important;
+      }
+    }
+  </style>
 </head>
 <body>
+  <div class="shell">
+    <header class="topbar" aria-label="Klarson status header">
+      <a class="logo logo-signal" href="#main" aria-label="Klarson scheduled maintenance">
+        <span class="logo-mark" aria-hidden="true">
+          <span></span><span></span><span></span><span></span>
+        </span>
+        <span class="logo-word">KLARSON</span>
+      </a>
+      <p class="micro-note">A short maintenance window while we refine the details behind the scenes.</p>
+    </header>
 
-    <div class="wrapper">
-        <div class="logo">
-            <svg class="brand-mark" viewBox="0 0 96 280" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <rect x="0" y="77" width="9" height="126" fill="var(--logo-ink)"/>
-                <rect x="29" y="0" width="9" height="280" fill="var(--logo-amber)"/>
-                <rect x="58" y="42" width="9" height="196" fill="var(--logo-ink)"/>
-                <rect x="87" y="98" width="9" height="84" fill="var(--logo-ink)"/>
-            </svg>
-            <span class="brand-name">KLARSON</span>
+    <main id="main" class="hero-wrap">
+      <section>
+        <p class="eyebrow">Scheduled maintenance</p>
+        <h1>We are tightening the last details. We will be back shortly.</h1>
+        <p class="lede">
+          Klarson is temporarily offline while we tune a few things the right way: cleaner structure, sharper performance,
+          and a more precise first impression. Nothing dramatic. Just the kind of work serious systems deserve.
+        </p>
+
+        <div class="meta" aria-label="Maintenance details">
+          <div class="meta-block">
+            <span class="meta-label">Expected return</span>
+            <span class="meta-value">Thursday · 14:00 UTC</span>
+          </div>
+          <div class="meta-block">
+            <span class="meta-label">Window type</span>
+            <span class="meta-value">Scheduled maintenance</span>
+          </div>
+          <div class="meta-block">
+            <span class="meta-label">Scope</span>
+            <span class="meta-value">Brand, structure, and launch polish</span>
+          </div>
         </div>
 
-        <h1>Refining our AI models.</h1>
-        <p class="tagline">We are currently making essential upgrades to our conversational AI infrastructure to deliver absolute clarity. All systems will resume in:</p>
+        <div class="line-wrap" aria-hidden="true">
+          <svg class="divider" viewBox="0 0 960 68" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M6 34H954" stroke="rgba(11,13,14,0.12)" stroke-width="1" stroke-dasharray="2 6"/>
+            <path class="wave" d="M6 34C58 34 74 18 126 18C178 18 194 50 246 50C300 50 318 24 372 24C428 24 442 46 498 46C556 46 574 22 632 22C688 22 706 40 762 40C820 40 838 34 892 34H954" stroke="#E8B23A" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+      </section>
 
-        <div class="timer">
-            <div class="unit">
-                <span class="val" id="d">00</span>
-                <span class="lab">Days</span>
-            </div>
-            <div class="unit">
-                <span class="val" id="h">00</span>
-                <span class="lab">Hours</span>
-            </div>
-            <div class="unit">
-                <span class="val" id="m">00</span>
-                <span class="lab">Minutes</span>
-            </div>
-            <div class="unit">
-                <span class="val" id="s">00</span>
-                <span class="lab">Seconds</span>
-            </div>
+      <aside class="status-card" aria-labelledby="countdown-title">
+        <div class="card-header">
+          <h2 id="countdown-title" class="card-title">Return window</h2>
+          <div class="badge" aria-live="polite">
+            <span class="badge-dot" aria-hidden="true"></span>
+            <span>UTC</span>
+          </div>
         </div>
 
-        <div class="footer-note">
-            <span class="philosophy">Powered by AI. Built for scale.</span>
-            <span class="meta-info">© 2026 KLARSON AI</span>
+        <div class="countdown" role="timer" aria-live="polite" aria-atomic="true">
+          <div class="count-item">
+            <p class="count-value" id="days">00</p>
+            <div class="count-label">Days</div>
+          </div>
+          <div class="count-item">
+            <p class="count-value" id="hours">00</p>
+            <div class="count-label">Hours</div>
+          </div>
+          <div class="count-item">
+            <p class="count-value" id="minutes">00</p>
+            <div class="count-label">Minutes</div>
+          </div>
+          <div class="count-item">
+            <p class="count-value" id="seconds">00</p>
+            <div class="count-label">Seconds</div>
+          </div>
         </div>
-    </div>
 
-    <script>
-        // Fecha objetivo: Miércoles 22 de Abril, 17:00 hora de Rumania (UTC+3)
-        const target = new Date("2026-04-22T17:00:00+03:00").getTime();
+        <p class="card-copy" id="status-message">
+          We expect to reopen on Thursday at 14:00 UTC. Until then, thank you for the patience.
+        </p>
+        <p class="subcopy" id="target-note">Target: 2026-04-23 14:00 UTC</p>
 
-        function update() {
-            const now = new Date().getTime();
-            const diff = target - now;
+        <div class="actions">
+          <a class="button button-primary" href="mailto:contact@klarsonai.com?subject=Question%20about%20Klarson&body=Hello%20Klarson%20team%2C%0A%0AI%E2%80%99d%20like%20to%20ask%20about%20the%20maintenance%20window.%0A%0A">Contact the team</a>
+          <a class="button button-secondary" href="javascript:window.location.reload()">Refresh status</a>
+        </div>
+      </aside>
+    </main>
 
-            if (diff > 0) {
-                document.getElementById('d').innerText = Math.floor(diff / 86400000).toString().padStart(2, '0');
-                document.getElementById('h').innerText = Math.floor((diff % 86400000) / 3600000).toString().padStart(2, '0');
-                document.getElementById('m').innerText = Math.floor((diff % 3600000) / 60000).toString().padStart(2, '0');
-                document.getElementById('s').innerText = Math.floor((diff % 60000) / 1000).toString().padStart(2, '0');
-            } else {
-                document.querySelector('h1').innerText = "CLARITY HAS ARRIVED.";
-                document.querySelector('.tagline').innerText = "The AI infrastructure upgrades are complete.";
-                document.querySelector('.timer').style.display = 'none';
-            }
+    <footer class="footer">
+      <span>© 2026 Klarson. Infrastructure, under revision.</span>
+      <span>The site will return automatically once the work is complete.</span>
+    </footer>
+  </div>
+
+  <script>
+    (function () {
+      const target = new Date('2026-04-23T14:00:00Z').getTime();
+      const statusMessage = document.getElementById('status-message');
+      const targetNote = document.getElementById('target-note');
+      const daysEl = document.getElementById('days');
+      const hoursEl = document.getElementById('hours');
+      const minutesEl = document.getElementById('minutes');
+      const secondsEl = document.getElementById('seconds');
+
+      function format(value) {
+        return String(value).padStart(2, '0');
+      }
+
+      function updateCountdown() {
+        const now = Date.now();
+        const diff = Math.max(0, target - now);
+
+        const day = 24 * 60 * 60 * 1000;
+        const hour = 60 * 60 * 1000;
+        const minute = 60 * 1000;
+        const second = 1000;
+
+        const days = Math.floor(diff / day);
+        const hours = Math.floor((diff % day) / hour);
+        const minutes = Math.floor((diff % hour) / minute);
+        const seconds = Math.floor((diff % minute) / second);
+
+        daysEl.textContent = format(days);
+        hoursEl.textContent = format(hours);
+        minutesEl.textContent = format(minutes);
+        secondsEl.textContent = format(seconds);
+
+        if (diff <= 0) {
+          statusMessage.textContent = 'The maintenance window has ended. Klarson should be available again now.';
+          targetNote.textContent = 'Window closed · UTC';
         }
-        
-        setInterval(update, 1000);
-        update();
-    </script>
+      }
 
+      updateCountdown();
+      setInterval(updateCountdown, 1000);
+    })();
+  </script>
 </body>
 </html>
-
